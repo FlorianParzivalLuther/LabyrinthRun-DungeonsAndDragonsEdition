@@ -1,91 +1,90 @@
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-size: cover;
-    background-color: rgb(188, 93, 93);
-    background-image: url("pics/background.png");
-  }
-  
-  .container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .title-image {
-    margin-right: 20px;
-    width: 200px;
-  }
-  
-  .game-board {
-    display: grid;
-    grid-template-columns: repeat(15, 40px);
-    justify-content: center;
-    background-color: none;
-  }
-  
-  .cell {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgb(75, 57, 57);
-    background-image: url("pics/cell_alternative.png");
-    background-size: cover;
-    position: relative;
-    border-radius: 10px;
-  }
-  
-  .blocked {
-    background-image: url("pics/TILE_1F.png");
-  }
-  
-  .color {
-    background-color: black;
-  }
-  
-  .hero {
-    background-image: url("pics/cell.jpg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  .enemy {
-    background-image: url("pics/enemy.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-size: cover;
+  background-color: rgb(17, 17, 51);
+  /*background-image: url("pics/background.png");*/
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.title-image {
+  margin-right: 20px;
+  width: 200px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(15, 40px);
+  justify-content: center;
+  background-color: none;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 0px solid rgb(238, 237, 203);
+  background-image: url("pixelpics/cell_default.png");
+  background-size: cover;
+  position: relative;
+  /*border-radius: 10px;*/
+}
+
+.blocked {
+  background-image: url("pixelpics/blocked_wall.png");
+}
+
+.color {
+  background-color: black;
+}
+
+.hero {
+  background-image: url("pixelpics/hero_warrior.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.enemy {
+  background-image: url("pixelpics/enemy_rat.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
+
+/*IMPORTANT - is not working so far*/
+@keyframes blink {
+  0% {
     background-color: transparent;
   }
-  
-  /*IMPORTANT - is not working so far*/
-  @keyframes blink {
-    0% {
-      background-color: transparent;
-    }
-    50% {
-      background-color: rgb(187, 65, 130);
-      background-image: url("pics/life.png");
-    }
-    100% {
-      background-color: transparent;
-    }
+  50% {
+    /*background-color: rgb(238, 237, 203);*/
+    background-image: url("pixelpics/attack_hero.png");
   }
-  
-  .cell.attack {
-    animation: blink 0.5s infinite;
+  100% {
+    background-color: transparent;
   }
-  
-  .hero-lives {
-    display: flex;
-    align-items: center;
-  }
-  
-  .hero-lives img {
-    width: 50px;
-    margin-left: 10px;
-  }
-  #headlineLifes {
-    color: white;
-  }
-  
+}
+
+.cell.attack {
+  animation: blink 0.5s infinite;
+}
+
+.hero-lives {
+  display: flex;
+  align-items: center;
+}
+
+.hero-lives img {
+  width: 50px;
+  margin-left: 10px;
+}
+#headlineLifes {
+  color: white;
+}
