@@ -2,10 +2,16 @@
 <html>
   <head>
     <title>Labyrinth Game</title>
+    <link rel="icon" href="/pixelpics/favicon_labrun.png" />
     <link rel="stylesheet" href="style.css" />
-    <style>@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');</style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fasthand&display=swap");
+    </style>
   </head>
   <body>
+
+  
+
     <div class="container">
       <img
         class="title-image"
@@ -13,26 +19,33 @@
         alt="Title Image"
       />
       <div class="game-board" id="gameBoard"></div>
-<div div class="container2">
-      <div class="hero-lives">
-        <img id="life1" src="pixelpics/life_hero.png" alt="Life Icon" />
-        <img id="life2" src="pixelpics/life_hero.png" alt="Life Icon" />
-        <img id="life3" src="pixelpics/life_hero.png" alt="Life Icon" />
-      </div>
-      
+      <div div class="container2">
+        <div class="hero-lives">
+          <img id="life1" src="pixelpics/life_hero.png" alt="Life Icon" />
+          <img id="life2" src="pixelpics/life_hero.png" alt="Life Icon" />
+          <img id="life3" src="pixelpics/life_hero.png" alt="Life Icon" />
+        </div>
 
-      <div class="enemy-defeat">
-        <img id="enemydeath" src="pixelpics/enemys_killed.png" alt="Death Enemies Icon"/>
-        <div id="enemydeathcounter" alt="Death Counter Enemies">0</div>
-      </div>
+        <div class="enemy-defeat">
+          <img
+            id="enemydeath"
+            src="pixelpics/enemys_killed.png"
+            alt="Death Enemies Icon"
+          />
+          <div id="enemydeathcounter" alt="Death Counter Enemies">0</div>
+        </div>
 
-      <div id="audioPlayer">
-        <img id="playButton" src="pixelpics/audio_music_on1.png" alt="Play Button" onclick="toggleAudio()">
-      </div>
-      <audio id="audioElement">
-        <source src="sounds/dungeon_music.mp3" type="audio/mp3">
-      </audio>
-
+        <div id="audioPlayer">
+          <img
+            id="playButton"
+            src="pixelpics/audio_music_on1.png"
+            alt="Play Button"
+            onclick="toggleAudio()"
+          />
+        </div>
+        <audio id="audioElement">
+          <source src="sounds/dungeon_music.mp3" type="audio/mp3" />
+        </audio>
       </div>
     </div>
 

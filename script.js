@@ -25,6 +25,7 @@ var audio = document.getElementById("audioElement");
 var playButton = document.getElementById("playButton");
 
 
+
 // Function to create the game board
 function createGameBoard() {
   for (let i = 0; i < labyrinth.length; i++) {
@@ -47,24 +48,18 @@ function createGameBoard() {
 
     gameBoard.appendChild(row);
   }
-  
 }
-
-
-
-    function toggleAudio() {
-      if (audio.paused) {
-        audio.play();
-        playButton.src = "pixelpics/audio_music.png"; // Replace with the path to the pause button image
-      } else {
-        audio.pause();
-        audio.currentTime = 0;
-        playButton.src = "pixelpics/audio_music_on1.png"; // Replace with the path to the play button image
-      }
-    }
-
-
-
+// Audiotoggle for the music
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play();
+    playButton.src = "pixelpics/audio_music.png"; // Replace with the path to the pause button image
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+    playButton.src = "pixelpics/audio_music_on1.png"; // Replace with the path to the play button image
+  }
+}
 
 // Function to generate a random position for the hero
 function generateRandomPosition() {
@@ -343,34 +338,33 @@ function heroAttack() {
   }
 }
 
-//restart game
-function restartGame() {
-  alert("Game Over! You lost all your lives.");
-  location.reload();
-  //   old code :
-  //   alert("Game Over! You lost all your lives.");
-  //   heroLives = 3;
-  //   enemiesDefeat=0;
-  //   let counterelement = document.getElementById("enemydeathcounter");
-  //   counterelement.textContent = enemiesDefeat;
 
-  //   // Remove hero and enemy cells
-  //   const heroCell = document.querySelector(`[data-position="${heroPosition}"]`);
-  //   heroCell.classList.remove("hero");
-  //   heroPosition = "";
+//restarting the game afer loosing all 3 lifes
+  function restartGame() {
+    const gameOverImage = document.createElement("img");
+    gameOverImage.src = "pixelpics/endscreen_laughing.gif";
+    gameOverImage.style.position = "fixed";
+    gameOverImage.style.top = "50%";
+    gameOverImage.style.left = "50%";
+    gameOverImage.style.transform = "translate(-50%, -50%)";
+    gameOverImage.style.opacity = "0";
+    gameOverImage.style.transition = "opacity 1s ease-in-out";
+    gameOverImage.style.height="120%";
+  
+    document.body.appendChild(gameOverImage);
+  
+    // Show the image for 4 seconds
+    setTimeout(() => {
+      gameOverImage.style.opacity = "1";
+      setTimeout(() => {
+        location.reload();
+      }, 5000); // Reload the page after 4 seconds
+    }, 100); // Delay showing the image for 100 milliseconds
+  }
 
-  //   for (let i = 0; i < enemies.length; i++) {
-  //     const enemyCell = document.querySelector(`[data-position="${enemies[i]}"]`);
-  //     enemyCell.classList.remove("enemy");
-  //   }
-  //   enemies.length = 0;
 
-  //   Generate new hero and enemies
-  //   generateRandomPosition();
-  //   generateEnemy();
-  //   generateEnemy();
-  //   generateEnemy();
-}
+
+
 
 // Create the game board when the page loads
 window.addEventListener("DOMContentLoaded", () => {
