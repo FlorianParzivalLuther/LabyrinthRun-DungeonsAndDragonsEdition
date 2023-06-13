@@ -27,8 +27,8 @@
                                                             #&&&&&%.                               
 
 
-This game takes you to a fantasy dungeon in an 8bit universe, facing various enemys.
-Humansized rats, undead soldiers and evil cobolds making your life as a hero hard.
+this game takes you to a fantasy dungeon in an 8bit universe, facing various enemys.
+humansized rats, undead soldiers and evil cobolds making your life as a hero hard.
 
 see how many enemys you can chop of with your sharpened weapon?
 you only have 3x lifes to give - stay alive as long as possible!
