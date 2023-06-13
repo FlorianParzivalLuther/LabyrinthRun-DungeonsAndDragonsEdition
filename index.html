@@ -23,8 +23,16 @@
 
       <div class="enemy-defeat">
         <img id="enemydeath" src="pixelpics/enemys_killed.png" alt="Death Enemies Icon"/>
-        <div id="enemydeathcounter" alt="Death Counter Enemies">1</div>
+        <div id="enemydeathcounter" alt="Death Counter Enemies">0</div>
       </div>
+
+      <div id="audioPlayer">
+        <img id="playButton" src="pixelpics/audio_music_on1.png" alt="Play Button" onclick="toggleAudio()">
+      </div>
+      <audio id="audioElement">
+        <source src="sounds/dungeon_music.mp3" type="audio/mp3">
+      </audio>
+
       </div>
     </div>
 

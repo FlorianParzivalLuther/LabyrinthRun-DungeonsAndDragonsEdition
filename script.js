@@ -21,6 +21,9 @@ let heroPosition;
 let heroLives = 3;
 const enemies = [];
 let enemiesDefeat = 0; //counter how many enemies out hero has defeated ->initialisation
+var audio = document.getElementById("audioElement");
+var playButton = document.getElementById("playButton");
+
 
 // Function to create the game board
 function createGameBoard() {
@@ -44,7 +47,24 @@ function createGameBoard() {
 
     gameBoard.appendChild(row);
   }
+  
 }
+
+
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        playButton.src = "pixelpics/audio_music.png"; // Replace with the path to the pause button image
+      } else {
+        audio.pause();
+        audio.currentTime = 0;
+        playButton.src = "pixelpics/audio_music_on1.png"; // Replace with the path to the play button image
+      }
+    }
+
+
+
 
 // Function to generate a random position for the hero
 function generateRandomPosition() {
@@ -55,10 +75,10 @@ function generateRandomPosition() {
   const randomCell = emptyCells[randomIndex];
   heroPosition = randomCell.dataset.position;
   randomCell.classList.add("hero");
+  audio.play();
 }
 
 // Function to generate a random position for an enemy
-// Old code
 /*
     function generateEnemy() {
       const emptyCells = Array.from(
@@ -78,6 +98,7 @@ function generateRandomPosition() {
       enemies.push(randomCell.dataset.position);
     }
     */
+
 //Function to generate a random position for an enemy
 function generateEnemy() {
   const emptyCells = Array.from(
@@ -92,14 +113,13 @@ function generateEnemy() {
   }
 
   //experimental randomizer
-  const styles = ["enemy", "enemy1", "enemy2"];
+  const styles = ["enemy1", "enemy2", "enemy3"];
   let randomizerStyles = styles[Math.floor(Math.random() * 3)];
   //experimental
 
   const randomIndex = Math.floor(Math.random() * emptyCells.length);
   const randomCell = emptyCells[randomIndex];
-  randomCell.classList.add(randomizerStyles);//maybe deleted
-  // experimental original code  -> randomCell.classList.add("enemy");
+  randomCell.classList.add(`${randomizerStyles}`, "enemy"); // experimental original code  -> randomCell.classList.add("enemy");
   enemies.push(randomCell.dataset.position);
 }
 
@@ -135,9 +155,9 @@ function moveHero(direction) {
     );
     //decreasing of the Heros lifes
     if (
-      newCell.classList.contains("enemy") ||
       newCell.classList.contains("enemy1") ||
-      newCell.classList.contains("enemy2")
+      newCell.classList.contains("enemy2") ||
+      newCell.classList.contains("enemy3")
     ) {
       heroLives--;
 
@@ -177,31 +197,9 @@ function updateLifeImages() {
     lifeImage2.style.visibility = "hidden";
     lifeImage3.style.visibility = "hidden";
   }
-
-  // switch (heroLives) {
-  //   case 3:
-  //     lifeImage1.style.visibility = "visible";
-  //     lifeImage2.style.visibility = "visible";
-  //     lifeImage3.style.visibility = "visible";
-  //     break;
-  //   case 2:
-  //     lifeImage1.style.visibility = "visible";
-  //     lifeImage2.style.visibility = "visible";
-  //     lifeImage3.style.visibility = "hidden";
-  //     break;
-  //   case 1:
-  //     lifeImage1.style.visibility = "visible";
-  //     lifeImage2.style.visibility = "hidden";
-  //     lifeImage3.style.visibility = "hidden";
-  //     break;
-  //   default:
-  //     lifeImage1.style.visibility = "visible";
-  //     lifeImage2.style.visibility = "visible";
-  //     lifeImage3.style.visibility = "visible";
-  // }
 }
 
-// Function to move the enemies 
+// Function to move the enemies
 function moveEnemies() {
   for (let i = 0; i < enemies.length; i++) {
     const [currentRow, currentCol] = enemies[i].split("-");
@@ -238,28 +236,24 @@ function moveEnemies() {
       const enemyCell = document.querySelector(
         `[data-position="${enemies[i]}"]`
       );
+
+      if (enemyCell.classList.contains("enemy1")) {
+        enemyCell.classList.remove("enemy1");
+        newCell.classList.add("enemy1");
+      } else if (enemyCell.classList.contains("enemy2")) {
+        enemyCell.classList.remove("enemy2");
+        newCell.classList.add("enemy2");
+      } else if (enemyCell.classList.contains("enemy3")) {
+        enemyCell.classList.remove("enemy3");
+        newCell.classList.add("enemy3");
+      }
       enemyCell.classList.remove("enemy");
       newCell.classList.add("enemy");
+
       enemies[i] = newPosition;
     }
-    
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Function to handle hero attack
 /* old function 
@@ -332,16 +326,16 @@ function heroAttack() {
   );
 
   if (
-    (attackCell && attackCell.classList.contains("enemy")) ||
     (attackCell && attackCell.classList.contains("enemy1")) ||
-    (attackCell && attackCell.classList.contains("enemy2"))
+    (attackCell && attackCell.classList.contains("enemy2")) ||
+    (attackCell && attackCell.classList.contains("enemy3"))
   ) {
     attackCell.classList.add("attack");
     setTimeout(() => {
       attackCell.classList.remove("attack");
-      attackCell.classList.remove("enemy");
       attackCell.classList.remove("enemy1");
       attackCell.classList.remove("enemy2");
+      attackCell.classList.remove("enemy3");
       enemies.splice(enemies.indexOf(attackPosition), 1);
     }, 500);
     enemiesDefeat++; //increasing the countervalue of enemiesDefeat
@@ -349,52 +343,42 @@ function heroAttack() {
   }
 }
 
-//maybe to removed!!!!!!!!
-// Function to update the life images visibility
-/*
-  function updateLifeImages() {
-    const lifeImages = document.querySelectorAll(".hero-lives img");
-    for (let i = 0; i < lifeImages.length; i++) {
-      if (i < heroLives) {
-        lifeImages[i].style.visibility = "visible";
-      } else {
-        lifeImages[i].style.display = "none";
-      }
-    }
-  }
-  */
-
 //restart game
 function restartGame() {
   alert("Game Over! You lost all your lives.");
-  heroLives = 3;
+  location.reload();
+  //   old code :
+  //   alert("Game Over! You lost all your lives.");
+  //   heroLives = 3;
+  //   enemiesDefeat=0;
+  //   let counterelement = document.getElementById("enemydeathcounter");
+  //   counterelement.textContent = enemiesDefeat;
 
-  // Remove hero and enemy cells
-  const heroCell = document.querySelector(`[data-position="${heroPosition}"]`);
-  heroCell.classList.remove("hero");
-  heroPosition = "";
+  //   // Remove hero and enemy cells
+  //   const heroCell = document.querySelector(`[data-position="${heroPosition}"]`);
+  //   heroCell.classList.remove("hero");
+  //   heroPosition = "";
 
-  for (let i = 0; i < enemies.length; i++) {
-    const enemyCell = document.querySelector(`[data-position="${enemies[i]}"]`);
-    enemyCell.classList.remove("enemy");
-  }
-  enemies.length = 0;
+  //   for (let i = 0; i < enemies.length; i++) {
+  //     const enemyCell = document.querySelector(`[data-position="${enemies[i]}"]`);
+  //     enemyCell.classList.remove("enemy");
+  //   }
+  //   enemies.length = 0;
 
-  // Generate new hero and enemies
-  generateRandomPosition();
-  generateEnemy();
-  generateEnemy();
-  generateEnemy();
+  //   Generate new hero and enemies
+  //   generateRandomPosition();
+  //   generateEnemy();
+  //   generateEnemy();
+  //   generateEnemy();
 }
 
 // Create the game board when the page loads
 window.addEventListener("DOMContentLoaded", () => {
   createGameBoard();
   generateRandomPosition();
-  setInterval(generateEnemy, 2000);   // Generate an enemy every 5 seconds
-  setInterval(moveEnemies, 500);      //move enemy every 0.5 seconds   //move enemies1 every seconds
-   //move enemies2 every 2 seconds
-  setInterval(updateLifeImages, 50); // maybe to be removed !!!!!!
+  setInterval(generateEnemy, 2000); // Generate an enemy every 5 seconds
+  setInterval(moveEnemies, 500); //move enemy every second
+  setInterval(updateLifeImages, 50); //updates the lifecounter every 0.05 seconds!
 });
 
 // Event listener for keyboard arrow key presses
