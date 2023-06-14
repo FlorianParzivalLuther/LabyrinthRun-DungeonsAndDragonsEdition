@@ -46,14 +46,14 @@ body {
 }
 
 .hero {
-  background-image: url("pixelpics/hero_warrior.png");
+  background-image: url("gifs/hero_warrior.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .powerUp {
-  background-image: url("pixelpics/powerup_beer.png");
+  background-image: url("gifs/powerup_beer.gif");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -67,13 +67,13 @@ body {
   background-color: transparent;
 }
 .enemy1 {
-  background-image: url("pixelpics/enemy_rat.png");
+  background-image: url("gifs/enemy_rat.gif");
 }
 .enemy2 {
-  background-image: url("pixelpics/enemy_cobold.png");
+  background-image: url("gifs/enemy_cobold.gif");
 }
 .enemy3 {
-  background-image: url("pixelpics/enemy_bones.png");
+  background-image: url("gifs/enemy_bones.gif");
 }
 
 /*IMPORTANT - is not working so far*/

@@ -72,27 +72,6 @@ function generateRandomPosition() {
   audio.play();
 }
 
-// Function to generate a random position for an enemy
-/*
-    function generateEnemy() {
-      const emptyCells = Array.from(
-        gameBoard.getElementsByClassName("cell")
-      ).filter(
-        (cell) =>
-          !cell.classList.contains("blocked") && !cell.classList.contains("enemy")
-      );
-    
-      if (emptyCells.length === 0) {
-        return;
-      }
-    
-      const randomIndex = Math.floor(Math.random() * emptyCells.length);
-      const randomCell = emptyCells[randomIndex];
-      randomCell.classList.add("enemy");
-      enemies.push(randomCell.dataset.position);
-    }
-    */
-
 //Function to generate a random position for an enemy
 function generateEnemy() {
   const emptyCells = Array.from(
@@ -293,57 +272,7 @@ function moveEnemies() {
 }
 
 // Function to handle hero attack
-/* old function 
-    function heroAttack() {
-      const [heroRow, heroCol] = heroPosition.split("-");
-      let attackRow, attackCol;
-    
-      // Calculate attack position based on hero direction
-      switch (direction) {
-        case "ArrowUp":
-          attackRow = Number(heroRow) - 1;
-          attackCol = Number(heroCol);
-          break;
-        case "ArrowDown":
-          attackRow = Number(heroRow) + 1;
-          attackCol = Number(heroCol);
-          break;
-        case "ArrowLeft":
-          attackRow = Number(heroRow);
-          attackCol = Number(heroCol) - 1;
-          break;
-        case "ArrowRight":
-          attackRow = Number(heroRow);
-          attackCol = Number(heroCol) + 1;
-          break;
-        default:
-          return;
-      }
-      const attackPosition = `${attackRow}-${attackCol}`;
-      const attackCell = document.querySelector(
-        `[data-position="${attackPosition}"]`
-      );
-    
-      if (attackCell) {
-        attackCell.classList.add("attack");
-        setTimeout(() => {
-          attackCell.classList.remove("attack");
-        }, 500); // Remove the "attack" class after 500ms
-      }
-    
-      // Check for enemy in the attack position
-      const enemyIndex = enemies.indexOf(attackPosition);
-    
-      if (enemyIndex !== -1) {
-        const enemyCell = document.querySelector(
-          `[data-position="${attackPosition}"]`
-        );
-        enemyCell.classList.remove("enemy");
-        enemies.splice(enemyIndex, 1);
-      }
-    }
-    */
-// new function to handle hero attack
+
 function heroAttack() {
   let counterelement = document.getElementById("enemydeathcounter"); //get a reference to the deathcounter
   const [heroRow, heroCol] = heroPosition.split("-");
@@ -402,6 +331,13 @@ function restartGame() {
     }, 4000); // Reload the page after 4 seconds
   }, 10); // Delay showing the image for 0.01 seconds
 }
+
+
+
+
+
+
+
 
 // Create the game board when the page loads
 window.addEventListener("DOMContentLoaded", () => {
