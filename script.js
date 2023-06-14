@@ -20,6 +20,7 @@ const gameBoard = document.getElementById("gameBoard");
 let heroPosition;
 let heroLives = 3;
 const enemies = [];
+const powerups = [];
 let enemiesDefeat = 0; //counter how many enemies out hero has defeated ->initialisation
 var audio = document.getElementById("audioElement");
 var playButton = document.getElementById("playButton");
@@ -98,22 +99,56 @@ function generateEnemy() {
     gameBoard.getElementsByClassName("cell")
   ).filter(
     (cell) =>
-      !cell.classList.contains("blocked") && !cell.classList.contains("enemy")
+      !cell.classList.contains("blocked") &&
+      !cell.classList.contains("enemy") &&
+      !cell.classList.contains("powerUp")
+  );
+
+  if (emptyCells.length === 0) {
+    //if there are no free cells left than dont generate
+    return;
+  }
+
+  //style randomizer
+  const styles = ["enemy1", "enemy2", "enemy3"];
+  let randomizerStyles = styles[Math.floor(Math.random() * 3)];
+
+  const randomIndex = Math.floor(Math.random() * emptyCells.length);
+  const randomCell = emptyCells[randomIndex];
+  randomCell.classList.add(`${randomizerStyles}`, "enemy"); // experimental original code  -> randomCell.classList.add("enemy");
+  enemies.push(randomCell.dataset.position);
+}
+
+//Function to generate a random powerUp
+function generatePowerUp() {
+  const emptyCells = Array.from(
+    gameBoard.getElementsByClassName("cell")
+  ).filter(
+    (cell) =>
+      !cell.classList.contains("blocked") &&
+      !cell.classList.contains("enemy") &&
+      !cell.classList.contains("powerUp")
   );
 
   if (emptyCells.length === 0) {
     return;
   }
 
-  //experimental randomizer
-  const styles = ["enemy1", "enemy2", "enemy3"];
-  let randomizerStyles = styles[Math.floor(Math.random() * 3)];
-  //experimental
-
   const randomIndex = Math.floor(Math.random() * emptyCells.length);
   const randomCell = emptyCells[randomIndex];
-  randomCell.classList.add(`${randomizerStyles}`, "enemy"); // experimental original code  -> randomCell.classList.add("enemy");
-  enemies.push(randomCell.dataset.position);
+  randomCell.classList.add("powerUp");
+  powerups.push(randomCell.dataset.position);
+}
+//Function removing the random powerUp after 10seconds
+function removePowerUp() {
+  const intervalId = setInterval(() => {
+    const powerUpPosition = document.querySelector(".powerUp");
+
+    if (powerUpPosition) {
+      powerUpPosition.classList.remove("powerUp");
+      clearInterval(intervalId); // Clear the interval
+    }
+  }, 1000); // Check every 1 second
 }
 
 // Function to move the hero
@@ -158,6 +193,10 @@ function moveHero(direction) {
         restartGame();
         return;
       }
+    }
+
+    if (newCell.classList.contains("powerUp")) {
+      heroLives++;
     }
 
     heroCell.classList.remove("hero");
@@ -245,7 +284,9 @@ function moveEnemies() {
 
       enemies[i] = newPosition;
     }
-    if(enemies.length>=20){ //gameover when more than 20 enemies on the field 
+
+    if (enemies.length > 15) {
+      //gameover when more than 15 enemies on the field
       restartGame();
     }
   }
@@ -358,23 +399,19 @@ function restartGame() {
     gameOverImage.style.opacity = "1";
     setTimeout(() => {
       location.reload();
-    }, 5000); // Reload the page after 4 seconds
-  }, 100); // Delay showing the image for 100 milliseconds
+    }, 4000); // Reload the page after 4 seconds
+  }, 10); // Delay showing the image for 0.01 seconds
 }
-
-
-
-
-
-
 
 // Create the game board when the page loads
 window.addEventListener("DOMContentLoaded", () => {
-  createGameBoard();//creates a gameboard
-  generateRandomPosition();//generates random position after reloading
-  setInterval(generateEnemy, 2000); // Generate an enemy every 5 seconds
-  setInterval(moveEnemies, 500); //move enemy every second
-  setInterval(updateLifeImages, 50); //updates the lifecounter every 0.05 seconds!
+  createGameBoard(); //creates a gameboard
+  generateRandomPosition(); //generates random position after reloading
+  setInterval(generateEnemy, 4000); // Generate an enemy every 5 seconds
+  setInterval(generatePowerUp, 10000); //Timer to get a powerup after 10 seconds
+  setInterval(removePowerUp, 12000); //Removes the powerups after 12 seconds
+  setInterval(moveEnemies, 500); //Move enemy every second
+  setInterval(updateLifeImages, 50); //Updates the lifecounter every 0.05 seconds!
 });
 
 // Event listener for keyboard "ARROW" key presses

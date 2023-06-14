@@ -36,3 +36,8 @@ you only have 3x lifes to give - stay alive as long as possible!
 Commands:
 Enter                       ->  Attack
 Keyboard Up,Down,Left,Right ->  Moving
+
+
+Implemented functions:
+-creating a Gameboard
+-

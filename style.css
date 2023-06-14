@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fasthand&family=VT323&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fasthand&family=VT323&display=swap");
 
 body {
   display: flex;
@@ -52,8 +52,13 @@ body {
   background-position: center;
 }
 
-
-
+.powerUp {
+  background-image: url("pixelpics/powerup_beer.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+}
 
 .enemy {
   background-size: contain;
@@ -63,19 +68,13 @@ body {
 }
 .enemy1 {
   background-image: url("pixelpics/enemy_rat.png");
- 
 }
 .enemy2 {
   background-image: url("pixelpics/enemy_cobold.png");
-  
 }
 .enemy3 {
   background-image: url("pixelpics/enemy_bones.png");
 }
-
-
-
-
 
 /*IMPORTANT - is not working so far*/
 @keyframes blink {
@@ -121,22 +120,11 @@ body {
 
 #enemydeathcounter {
   color: rgb(238, 237, 203);
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   font-size: 50px;
 }
 
-#playButton{
+#playButton {
   width: 50px;
   margin-left: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
