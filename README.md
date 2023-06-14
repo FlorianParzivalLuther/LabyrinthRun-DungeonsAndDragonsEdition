@@ -1,8 +1,4 @@
 
-
-Lab-Run 01
-Welcome to Lab-Run 01, a thrilling labyrinth game where you embark on an adventure filled with challenges and excitement! Navigate through the twists and turns of intricate mazes, collecting treasures, avoiding obstacles, and ultimately reaching the goal.
-
                                              ,--,  ,.-.
                ,                   \,       '-,-`,'-.' | ._
               /|           \    ,   |\         }  )/  / `-,',
@@ -26,6 +22,10 @@ Welcome to Lab-Run 01, a thrilling labyrinth game where you embark on an adventu
  ,>,_ )_,..(    )\          -,,_-`  _--`
 (_ \|`   _,/_  /  \_            ,--`
  \( `   <.,../`     `-.._   _,-`
+Lab-Run 01
+Welcome to Lab-Run 01, a thrilling labyrinth game where you embark on an adventure filled with challenges and excitement! Navigate through the twists and turns of intricate mazes, collecting treasures, avoiding obstacles, and ultimately reaching the goal.
+
+
 
 Instructions
 Use the arrow keys to control your character.
