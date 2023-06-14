@@ -245,6 +245,9 @@ function moveEnemies() {
 
       enemies[i] = newPosition;
     }
+    if(enemies.length>=20){ //gameover when more than 20 enemies on the field 
+      restartGame();
+    }
   }
 }
 
@@ -359,21 +362,27 @@ function restartGame() {
   }, 100); // Delay showing the image for 100 milliseconds
 }
 
+
+
+
+
+
+
 // Create the game board when the page loads
 window.addEventListener("DOMContentLoaded", () => {
-  createGameBoard();
-  generateRandomPosition();
+  createGameBoard();//creates a gameboard
+  generateRandomPosition();//generates random position after reloading
   setInterval(generateEnemy, 2000); // Generate an enemy every 5 seconds
   setInterval(moveEnemies, 500); //move enemy every second
   setInterval(updateLifeImages, 50); //updates the lifecounter every 0.05 seconds!
 });
 
-// Event listener for keyboard arrow key presses
+// Event listener for keyboard "ARROW" key presses
 window.addEventListener("keydown", (event) => {
   moveHero(event.key);
 });
 
-// Event listener for enter key press to trigger hero attack
+// Event listener for "ENTER" key press to trigger hero attack
 window.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     heroAttack();
