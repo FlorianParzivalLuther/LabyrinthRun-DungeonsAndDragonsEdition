@@ -2,6 +2,9 @@
 
 /*devicewidth switch when on mobile*/
 @media only screen and (max-device-width: 450px) {
+  * {
+    touch-action: manipulation;
+  }
   body {
     display: flex;
     justify-content: center;
