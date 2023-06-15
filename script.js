@@ -25,6 +25,13 @@ let enemiesDefeat = 0; //counter how many enemies out hero has defeated ->initia
 var audio = document.getElementById("audioElement");
 var playButton = document.getElementById("playButton");
 
+let leftButton = document.getElementById("left-button");
+let rightButton = document.getElementById("right-button");
+let upButton = document.getElementById("up-button");
+let downButton = document.getElementById("down-button");
+
+let smashButton = document.getElementById("smash-button");
+
 // Function to create the game board
 function createGameBoard() {
   for (let i = 0; i < labyrinth.length; i++) {
@@ -183,6 +190,61 @@ function moveHero(direction) {
     heroPosition = newPosition;
   }
 }
+
+// Function to move the hero - mobile version
+function moveHeroMobile(direction) {
+  const [currentRow, currentCol] = heroPosition.split("-");
+  let newRow = Number(currentRow);
+  let newCol = Number(currentCol);
+
+  switch (direction) {
+    case "up":
+      newCol -= 1;
+      break;
+    case "down":
+      newCol += 1;
+      break;
+    case "left":
+      newRow -= 1;
+      break;
+    case "right":
+      newRow += 1;
+      break;
+    default:
+      return;
+  }
+
+  const newPosition = `${newRow}-${newCol}`;
+  const newCell = document.querySelector(`[data-position="${newPosition}"]`);
+
+  if (newCell && !newCell.classList.contains("blocked")) {
+    const heroCell = document.querySelector(
+      `[data-position="${heroPosition}"]`
+    );
+    //decreasing of the Heros lifes
+    if (
+      newCell.classList.contains("enemy1") ||
+      newCell.classList.contains("enemy2") ||
+      newCell.classList.contains("enemy3")
+    ) {
+      heroLives--;
+
+      if (heroLives <= 0) {
+        restartGame();
+        return;
+      }
+    }
+
+    if (newCell.classList.contains("powerUp")) {
+      heroLives++;
+    }
+
+    heroCell.classList.remove("hero");
+    newCell.classList.add("hero");
+    heroPosition = newPosition;
+  }
+}
+
 //should update the heroes lifes
 function updateLifeImages() {
   const lifeImage1 = document.getElementById("life1");
@@ -354,10 +416,33 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("keydown", (event) => {
   moveHero(event.key);
 });
-
 // Event listener for "ENTER" key press to trigger hero attack
 window.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
+    heroAttack();
+  }
+});
+
+// Mobile version navigation
+// Event listener for the "LEFT,RIGHT,UP,DOWN" buttons on the mobile version ! not working
+upButton.addEventListener("click", () => {
+  moveHeroMobile("up");
+});
+
+downButton.addEventListener("click", () => {
+  moveHeroMobile("down");
+});
+
+leftButton.addEventListener("click", () => {
+  moveHeroMobile("left");
+});
+
+rightButton.addEventListener("click", () => {
+  moveHeroMobile("right");
+});
+// Event listener for the Hero attack with the "SMASH" button on the mobile version ! working
+window.addEventListener("click", (event1) => {
+  if (event1.target.id === "smash-button") {
     heroAttack();
   }
 });

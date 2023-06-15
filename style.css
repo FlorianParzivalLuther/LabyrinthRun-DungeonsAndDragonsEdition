@@ -1,5 +1,200 @@
 @import url("https://fonts.googleapis.com/css2?family=Fasthand&family=VT323&display=swap");
 
+/*devicewidth switch when on mobile*/
+@media only screen and (max-device-width: 375px) {
+  
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-color: rgb(17, 17, 51);
+    /*background-image: url("pics/background.png");*/
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container2 {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .title-image {
+    margin-right: 20px;
+    width: 200px;
+    display: none;
+  }
+
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(15, 40px);
+    justify-content: center;
+    background-color: none;
+  }
+
+  .cell {
+    width: 40px;
+    height: 40px;
+    border: 0px solid rgb(238, 237, 203);
+    background-image: url("pixelpics/cell_default.png");
+    background-size: cover;
+    position: relative;
+    /*border-radius: 10px;*/
+  }
+
+  .blocked {
+    background-image: url("pixelpics/blocked_wall.png");
+  }
+
+  .color {
+    background-color: black;
+  }
+
+  .hero {
+    background-image: url("pixelpics/hero_warrior.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .powerUp {
+    background-image: url("pixelpics/powerup_beer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+
+  .enemy {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+  }
+  .enemy1 {
+    background-image: url("pixelpics/enemy_rat.png");
+  }
+  .enemy2 {
+    background-image: url("pixelpics/enemy_cobold.png");
+  }
+  .enemy3 {
+    background-image: url("pixelpics/enemy_bones.png");
+  }
+
+  /*IMPORTANT - is not working so far*/
+  @keyframes blink {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      /*background-color: rgb(238, 237, 203);*/
+      background-image: url("pixelpics/attack_hero.png");
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .cell.attack {
+    animation: blink 0.5s infinite;
+  }
+
+  .hero-lives {
+    display: flex;
+    align-items: center;
+  }
+  .hero-lives img {
+    width: 50px;
+    margin-left: 10px;
+  }
+  #headlineLifes {
+    color: white;
+  }
+
+  .enemy-defeat {
+    display: flex;
+    align-items: center;
+  }
+  .enemy-defeat img {
+    width: 50px;
+    margin-left: 10px;
+  }
+  #headlineLifes {
+    color: white;
+  }
+
+  #enemydeathcounter {
+    color: rgb(238, 237, 203);
+    font-family: "VT323", monospace;
+    font-size: 50px;
+  }
+
+  #playButton {
+    width: 50px;
+    margin-left: 10px;
+  }
+
+  #left-button {
+    width: 100px;
+  }
+
+  .mobileContainer button{
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    }
+  .game-button{
+      width: 100px;
+      padding: 0 30px 0 30px;
+    }
+  .mobileContainer{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40vh;
+    
+  }
+  .arrow-buttons{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    align-items:center;
+  }
+  .containermobileMain{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:column;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*default desktop version*/
+
+
+
+
+
+@media only screen and (min-device-width: 376px) {
 body {
   display: flex;
   justify-content: center;
@@ -7,7 +202,6 @@ body {
   height: 100vh;
   background-size: cover;
   background-color: rgb(17, 17, 51);
-  /*background-image: url("pics/background.png");*/
 }
 
 .container {
@@ -34,7 +228,6 @@ body {
   background-image: url("pixelpics/cell_default.png");
   background-size: cover;
   position: relative;
-  /*border-radius: 10px;*/
 }
 
 .blocked {
@@ -76,13 +269,11 @@ body {
   background-image: url("gifs/enemy_bones.gif");
 }
 
-/*IMPORTANT - is not working so far*/
 @keyframes blink {
   0% {
     background-color: transparent;
   }
   50% {
-    /*background-color: rgb(238, 237, 203);*/
     background-image: url("pixelpics/attack_hero.png");
   }
   100% {
@@ -127,4 +318,12 @@ body {
 #playButton {
   width: 50px;
   margin-left: 10px;
+}
+
+.mobileContainer button{
+  display:none;
+  }
+.game-button{
+    display:none;
+  }
 }
