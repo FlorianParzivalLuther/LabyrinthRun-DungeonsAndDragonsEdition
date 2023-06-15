@@ -32,6 +32,8 @@ It is a browser-based game developed with HTML, CSS, and JavaScript, ensuring co
 - Extract the files (if necessary) and open the index.html file in your preferred web browser.
 
 [x] Start exploring the labyrinth and enjoy the game!
+Link for the game to play: [LAB-RUN](https://florianparzivalluther.github.io/LabyrinthRun-DungeonsAndDragonsEdition/).
+
 
 ---
 
