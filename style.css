@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fasthand&family=VT323&display=swap");
 
 /*devicewidth switch when on mobile*/
-@media only screen and (max-device-width: 375px) {
-  
-
+@media only screen and (max-device-width: 390px) {
   body {
     display: flex;
     justify-content: center;
@@ -143,7 +141,7 @@
     width: 100px;
   }
 
-  .mobileContainer button{
+  .mobileContainer button {
     background: none;
     color: inherit;
     border: none;
@@ -151,179 +149,163 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    }
-  .game-button{
-      width: 100px;
-      padding: 0 30px 0 30px;
-    }
-  .mobileContainer{
+  }
+  .game-button {
+    width: 100px;
+    padding: 0 30px 0 30px;
+  }
+  .mobileContainer {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 40vh;
-    
   }
-  .arrow-buttons{
-    display:flex;
-    justify-content:center;
-    flex-direction:column;
-    align-items:center;
+  .arrow-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
-  .containermobileMain{
-    display:flex;
-    justify-content:space-around;
-    flex-direction:column;
+  .containermobileMain {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /*default desktop version*/
 
-
-
-
-
 @media only screen and (min-device-width: 376px) {
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-size: cover;
-  background-color: rgb(17, 17, 51);
-}
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-color: rgb(17, 17, 51);
+  }
 
-.container {
-  display: flex;
-  align-items: center;
-}
+  .container {
+    display: flex;
+    align-items: center;
+  }
 
-.title-image {
-  margin-right: 20px;
-  width: 200px;
-}
+  .title-image {
+    margin-right: 20px;
+    width: 200px;
+  }
 
-.game-board {
-  display: grid;
-  grid-template-columns: repeat(15, 40px);
-  justify-content: center;
-  background-color: none;
-}
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(15, 40px);
+    justify-content: center;
+    background-color: none;
+  }
 
-.cell {
-  width: 40px;
-  height: 40px;
-  border: 0px solid rgb(238, 237, 203);
-  background-image: url("pixelpics/cell_default.png");
-  background-size: cover;
-  position: relative;
-}
+  .cell {
+    width: 40px;
+    height: 40px;
+    border: 0px solid rgb(238, 237, 203);
+    background-image: url("pixelpics/cell_default.png");
+    background-size: cover;
+    position: relative;
+  }
 
-.blocked {
-  background-image: url("pixelpics/blocked_wall.png");
-}
+  .blocked {
+    background-image: url("pixelpics/blocked_wall.png");
+  }
 
-.color {
-  background-color: black;
-}
+  .color {
+    background-color: black;
+  }
 
-.hero {
-  background-image: url("gifs/hero_warrior.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
+  .hero {
+    background-image: url("gifs/hero_warrior.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
-.powerUp {
-  background-image: url("gifs/powerup_beer.gif");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-}
-
-.enemy {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-}
-.enemy1 {
-  background-image: url("gifs/enemy_rat.gif");
-}
-.enemy2 {
-  background-image: url("gifs/enemy_cobold.gif");
-}
-.enemy3 {
-  background-image: url("gifs/enemy_bones.gif");
-}
-
-@keyframes blink {
-  0% {
+  .powerUp {
+    background-image: url("gifs/powerup_beer.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: transparent;
   }
-  50% {
-    background-image: url("pixelpics/attack_hero.png");
-  }
-  100% {
+
+  .enemy {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: transparent;
   }
-}
-
-.cell.attack {
-  animation: blink 0.5s infinite;
-}
-
-.hero-lives {
-  display: flex;
-  align-items: center;
-}
-.hero-lives img {
-  width: 50px;
-  margin-left: 10px;
-}
-#headlineLifes {
-  color: white;
-}
-
-.enemy-defeat {
-  display: flex;
-  align-items: center;
-}
-.enemy-defeat img {
-  width: 50px;
-  margin-left: 10px;
-}
-#headlineLifes {
-  color: white;
-}
-
-#enemydeathcounter {
-  color: rgb(238, 237, 203);
-  font-family: "VT323", monospace;
-  font-size: 50px;
-}
-
-#playButton {
-  width: 50px;
-  margin-left: 10px;
-}
-
-.mobileContainer button{
-  display:none;
+  .enemy1 {
+    background-image: url("gifs/enemy_rat.gif");
   }
-.game-button{
-    display:none;
+  .enemy2 {
+    background-image: url("gifs/enemy_cobold.gif");
+  }
+  .enemy3 {
+    background-image: url("gifs/enemy_bones.gif");
+  }
+
+  @keyframes blink {
+    0% {
+      background-color: transparent;
+    }
+    50% {
+      background-image: url("pixelpics/attack_hero.png");
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .cell.attack {
+    animation: blink 0.5s infinite;
+  }
+
+  .hero-lives {
+    display: flex;
+    align-items: center;
+  }
+  .hero-lives img {
+    width: 50px;
+    margin-left: 10px;
+  }
+  #headlineLifes {
+    color: white;
+  }
+
+  .enemy-defeat {
+    display: flex;
+    align-items: center;
+  }
+  .enemy-defeat img {
+    width: 50px;
+    margin-left: 10px;
+  }
+  #headlineLifes {
+    color: white;
+  }
+
+  #enemydeathcounter {
+    color: rgb(238, 237, 203);
+    font-family: "VT323", monospace;
+    font-size: 50px;
+  }
+
+  #playButton {
+    width: 50px;
+    margin-left: 10px;
+  }
+
+  .mobileContainer button {
+    display: none;
+  }
+  .game-button {
+    display: none;
   }
 }
