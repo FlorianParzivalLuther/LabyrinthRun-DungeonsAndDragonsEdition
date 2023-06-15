@@ -16,6 +16,7 @@ const labyrinth = [
   "###############",
 ];
 
+
 const gameBoard = document.getElementById("gameBoard");
 let heroPosition;
 let heroLives = 3;
@@ -24,6 +25,8 @@ const powerups = [];
 let enemiesDefeat = 0; //counter how many enemies out hero has defeated ->initialisation
 var audio = document.getElementById("audioElement");
 var playButton = document.getElementById("playButton");
+
+
 
 // Function to create the game board
 function createGameBoard() {
