@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fasthand&family=VT323&display=swap");
 
 /*devicewidth switch when on mobile*/
-@media only screen and (max-device-width: 390px) {
+@media only screen and (max-device-width: 450px) {
   body {
     display: flex;
     justify-content: center;
@@ -176,7 +176,7 @@
 
 /*default desktop version*/
 
-@media only screen and (min-device-width: 376px) {
+@media only screen and (min-device-width: 451px) {
   body {
     display: flex;
     justify-content: center;
