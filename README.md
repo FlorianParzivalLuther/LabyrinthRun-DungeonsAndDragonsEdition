@@ -33,6 +33,30 @@ It is a browser-based game developed with HTML, CSS, and JavaScript, ensuring co
 Link for the game to play: [LAB-RUN](https://florianparzivalluther.github.io/LabyrinthRun-DungeonsAndDragonsEdition/).
 
 ---
+**Gamehandling:**
+---
+**Mobile:**
+- Attack: <br>Use the right **SMASH** button on the down-right side to randomize attack the enemy when placed before them.<br>
+          But dont get frustrated when the first attack does not hit, there is always a chance to miss the enemies.<br>
+          **So smash the button!!!**
+- Run:    <br>Use the generated **ARROW** buttons on the down-left side to navigate the hero inside the labyrinth.
+  
+**Desktop:**
+- Attack: <br>Use the **ARROW** keys!
+- Attack: <br>Use the **ENTER** key!
+
+**General:**
+- Music: <br>Press the **NOTE** to play!<br>Press again to mute it!
+- PowerUp: <br>The PowerUp is represented by a **BEER* what will disappear after 2 seconds
+- Loosing Lifes: <br>Try to avoid to cross the enemies path, you'll loose lifepoints!
+- End of the Game: <br>There are two possibilities to loose the game:<br>
+1. Loosing all of your lifepoints!
+2. The enemy spawning is outnumber you by 15!
+<br><br>
+**HAVE FUN PLAYING IT!**
+
+
+---
 
 **Technologies:**
 - HTML: The code includes HTML elements and structure to create the game board and user interface.
